@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use these files, please cite the thesis below, together with PFAUST and FAUST (see README.md)."
+title: "Dense ground truth for PFAUST"
+type: dataset
+authors:
+  - family-names: Emektar
+    given-names: Mustafa Barış
+license: MIT
+preferred-citation:
+  type: thesis
+  thesis-type: "MSc thesis"
+  title: "A Controlled Study of Fan-Based Mesh Convolution Extensions and Descriptor Masking for Dense Shape Correspondence"
+  authors:
+    - family-names: Emektar
+      given-names: Mustafa Barış
+  institution:
+    name: "Middle East Technical University"
+  year: 2026

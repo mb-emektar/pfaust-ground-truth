@@ -1,0 +1,18 @@
+# notes and helpers for preparing the release, not part of the repository
+REPO_SETUP.txt
+copy_data.sh
+
+# generated text copies (attach them to a release instead)
+data_txt/
+
+# never add meshes or caches here: the meshes come from their own
+# repositories (see README.md), the caches are specific to our code
+*.off
+*.obj
+*.ply
+cache*/
+geodist/
+
+__pycache__/
+*.pyc
+.DS_Store
