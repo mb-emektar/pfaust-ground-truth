@@ -3,6 +3,20 @@
 Dense ground-truth correspondences for all **1360 complete–partial pairs** of
 the official training and test splits of **PFAUST-M** and **PFAUST-H**.
 
+<p align="center">
+  <img src="assets/teaser.png" width="760"
+       alt="A texture on a complete FAUST shape carried to another person: to the complete shape by the FAUST ground truth and to two partial shapes by this repository">
+</p>
+
+*A texture painted on a complete FAUST shape (left) and carried to another
+person in another pose: to the complete shape through the standard FAUST
+ground truth, and to two partial shapes cut from it through the files of this
+repository. The jagged edges and bent letters are already in the FAUST ground
+truth, a vertex-to-vertex map whose template landmarks sit on the nearest
+vertex of each mesh; on the surviving surface the partial shapes match the
+complete one exactly. Vertices without a row (see [File format](#file-format))
+take the value of their nearest vertex that has one.*
+
 PFAUST ([Bracha et al.](https://github.com/ABracha/PFAUST)) cuts holes into
 the remeshed FAUST shapes. For each partial shape the release records which
 vertices of its own complete shape survive, and for each complete shape the
@@ -29,6 +43,7 @@ data/pairs_test.txt            the test pairs
 scripts/make_gt.py             rebuilds every file from the two public sources
 scripts/load_pair.py           reading example and self-check
 scripts/export_txt.py          plain-text copy of the files (MATLAB, C++, ...)
+assets/teaser.png              the image above
 ```
 
 The meshes are **not** included; they come from their original repositories
@@ -52,6 +67,10 @@ that survives in the partial shape, so *N* varies from pair to pair:
 |---|---|
 | PFAUST-M | 1673 / 3231 / 4224 |
 | PFAUST-H | 1233 / 2697 / 3525 |
+
+As in FAUST remeshed itself, whose 5000 template landmarks fall on about 69% of
+the vertices of each shape, not every partial vertex has a row. Code that
+evaluates on FAUST remeshed through the template landmarks works unchanged.
 
 Note that the PFAUST repository names its partial meshes `tr_reg_<iii>.off`,
 like the complete FAUST shapes. In our file names the first id is always the
@@ -89,6 +108,14 @@ FAUST is distributed under its own license
 vertex indices only.
 
 ## How the files were made
+
+```mermaid
+flowchart LR
+    P["partial shape<br/>cut from tr_reg_iii"] ---|"1 · same coordinates"| Fi["complete shape<br/>tr_reg_iii"]
+    Fi ---|"2 · vts of tr_reg_iii"| T(("FAUST template<br/>5000 landmarks"))
+    T ---|"3 · vts of tr_reg_jjj"| Fj["complete shape<br/>tr_reg_jjj"]
+    P ==>|"this repository"| Fj
+```
 
 For every partial shape `i` and every complete shape `j` of its split:
 
